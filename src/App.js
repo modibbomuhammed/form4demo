@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Currency from "./Currency";
 import SliderComponent from "./SliderComponent";
+import TimeComponent from "./TimeComponent";
 import './App.css';
 
 class PartnerForm extends Component {
@@ -269,35 +270,11 @@ class PartnerForm extends Component {
           {
             Object.keys(this.state.formData.config.openingHours).map((day, index) => (
               <div key={day + index}>
-                <div className="form-group" >
-                  <label htmlFor="openingHours-Monday">{`Opening Hours (${day}):`}</label>
-                  <select
-                    value={formData.config.openingHours[day].openingTime}
-                    onChange={(e) => this.handleOpeningHoursChange(day, "openingTime", e.target.value)}
-                  >
-                    <option value="">Select Time</option>
-                    {this.timeOptions.map((time) => (
-                      <option key={time} value={time}>
-                        {time}
-                      </option>
-                    ))}
-                  </select>
-                </div>
 
-                <div className="form-group" >
-                  <label htmlFor="closingHours-Monday">{`closing Hours (${day}):`}</label>
-                  <select
-                    value={formData.config.openingHours[day].closingTime}
-                    onChange={(e) => this.handleOpeningHoursChange(day, "closingTime", e.target.value)}
-                  >
-                    <option value="">Select Time</option>
-                    {this.timeOptions.map((time) => (
-                      <option key={time} value={time}>
-                        {time}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <TimeComponent day={day} formData={formData} status="openingTime" handleTimeChange={this.handleOpeningHoursChange} timeOptions={this.timeOptions} />
+
+                <TimeComponent day={day} formData={formData} status="closingTime" handleTimeChange={this.handleOpeningHoursChange} timeOptions={this.timeOptions} />
+
               </div>
             ))
           }
