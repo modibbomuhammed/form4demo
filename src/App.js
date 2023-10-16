@@ -156,7 +156,7 @@ class PartnerForm extends Component {
 
     const apiEndpoint = 'api';
     const { formData } = this.state;
-
+    console.log({ daysofweek: Object.keys(formData.config.openingHours) });
     const withConvertedTimes = Object.values(formData.config.openingHours).reduce((curr, next, index, arr) => {
       const fullTime = `${next['openingTime']}-${next["closingTime"]}`;
       return curr + fullTime + `${index === (arr.length - 1) ? '' : ","}`;
@@ -228,7 +228,7 @@ class PartnerForm extends Component {
             />
           </div>
 
-          {this.state.formData.config.categories.map((input, index) => (
+          {formData.config.categories.map((input, index) => (
             <div className="form-group" key={index}>
               <label htmlFor={`categories${index}`}>{index === 0 ? `Categories:` : `Extra Category`}</label>
               <input

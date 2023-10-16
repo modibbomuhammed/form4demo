@@ -8,7 +8,7 @@ const TimeComponent = ({ day, formData, handleTimeChange, timeOptions, status })
                 value={formData.config.openingHours[day].openingTime}
                 onChange={(e) => handleTimeChange(day, status, e.target.value)}
             >
-                <option value="">Select Time</option>
+                <option>Select Time</option>
                 {timeOptions.map((time) => (
                     <option key={time} value={time}>
                         {time}
